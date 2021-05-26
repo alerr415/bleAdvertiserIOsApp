@@ -11,8 +11,9 @@ import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-
-
+    
+    var window: UIWindow?
+    private lazy var bluetoothManager = CoreBluetoothManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -20,6 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //Initializing Google Sign In
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
+        
+        //Bluetooth stuff begin
+        //window = UIWindow(frame: UIScreen.main.bounds)
+        //let vc = BluetoothViewController(bluetoothManager: bluetoothManager)
+        //let navController = UINavigationController(rootViewController: vc)
+        //window?.rootViewController = navController
+        //window?.makeKeyAndVisible()
+        //end
+        
         return true
     }
     

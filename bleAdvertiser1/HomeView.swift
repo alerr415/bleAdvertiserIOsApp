@@ -8,9 +8,11 @@
 import SwiftUI
 import Firebase
 import GoogleSignIn
+import CoreBluetooth
 
 struct HomeView: View {
     @State private var onOff = false
+    
     var body: some View {
         VStack{
             
@@ -36,7 +38,8 @@ struct HomeView: View {
                 .padding(.bottom, 30)
                 .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 if onOff {
-                    Text("New views")
+                    //Text("New views")
+                    startAdvertising()
                 }
             
             Button("Sign out", action: {
@@ -44,9 +47,6 @@ struct HomeView: View {
                 
                 try! Auth.auth().signOut()
             })
-            .onTapGesture {
-                ContentView()
-            }
             .padding(.vertical)
             .frame(width: UIScreen.main.bounds.width - 200)
             .background(Color.primary)
